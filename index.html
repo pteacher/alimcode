@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>АЛИМ - Школа Программирования</title>
+	<meta charset="utf-8">
+	<style>
+	        .line-error {
+	            background: #CC2222 !important;
+	            color: #8a1f11 !important;
+	        }
+	 
+	</style>
+	<link rel="stylesheet prefetch prerender" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" data-noprefix>
+	<link rel="stylesheet" href="./css/fa.css" data-noprefix>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js"></script>
+
+	<!--jquery ui styles-->
+	<link rel="stylesheet" href="./css/jquery-ui.min.css">
+	<link rel="stylesheet" href="./css/jquery-ui.structure.min.css">
+	<link rel="stylesheet" href="./css/styles.css">
+
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/jquery-ui.min.js"></script>
+
+	<script src="./codemirror/lib/codemirror.js"></script>
+	<link rel="stylesheet" href="./codemirror/lib/codemirror.css">
+	<script src="./codemirror/mode/javascript/javascript.js"></script>
+	<link rel="stylesheet" href="./codemirror/theme/dracula.css">
+	<script src="./codemirror/addon/scroll/simplescrollbars.js"></script>
+
+
+	<!--codemirror modes-->
+	<script src="./codemirror/mode/python/python.js"></script>
+	<script src="./codemirror/mode/javascript/javascript.js"></script>
+
+	<!--codemirror addons-->
+	<script src="./codemirror/addon/fold/foldcode.js"></script>
+	<script src="./codemirror/addon/fold/foldgutter.js"></script>
+	<script src="./codemirror/addon/fold/brace-fold.js"></script>
+	<script src="./codemirror/addon/edit/matchbrackets.js"></script>
+	<script src="./codemirror/addon/edit/closetag.js"></script>
+	<script src="./codemirror/addon/edit/closebrackets.js"></script>
+	<script src="./codemirror/addon/scroll/simplescrollbars.js"></script>
+	<script src="./codemirror/addon/selection/active-line.js"></script>
+
+	<script src="./codemirror/keymap/sublime.js"></script>
+
+
+</head>
+<body>
+<div id="wrapper">
+    <section id="utils">
+        <div class="logo">
+            <a href="#"><img src="./images/alimcode.png" alt=""></a>
+        </div>
+        <div class="code-swap">
+            <span class="toggle-view">view <i class="fa fa-chevron-down"></i></span>
+            <span class="run-script">Запуск <i class="fa fa-bolt"></i></span>
+        </div>
+        <div class="code-tools">
+
+            <!--span class="clear-editor">- <i class="fa fa-trash"></i></span-->
+            
+            <!--span class="save">- <i class="fa fa-download"></i></span-->
+        </div>
+    </section>
+    <section id="editor">
+        <div class="code-pane">
+            <div class="code-pane-html">
+                <textarea id="alimcode" name="alimcode"></textarea>
+            </div>
+        </div>
+        <div class="preview-pane">
+        	<script src="./js/pixi.min.js"></script>
+        	<script type="text/javascript" src="./js/robot.js"></script>
+            <span class="preview-width"></span>
+        </div>
+    </section>
+</div>
+<script type="text/javascript" src="./js/main.js"></script>
+</body>
+</html>
