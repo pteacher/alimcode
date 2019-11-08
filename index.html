@@ -50,7 +50,7 @@
 	<script type="text/javascript">
 		function outf(text)
 		{
-		    var output = document.getElementById("alimcode");
+		    var output = document.getElementById("output");
 		    text = text.replace(/</g, '&lt;');
 		    output.innerHTML = output.innerHTML + text;
 		}
@@ -58,7 +58,7 @@
 		function runit()
 		{
 		    var prog = document.getElementById("alimcode").value;
-		    var output = document.getElementById("alimcode");
+		    var output = document.getElementById("output");
 		    output.innerHTML = '';
 		    Sk.configure({output:outf});
 		    try {
@@ -92,7 +92,7 @@
         <div class="code-pane">
             <div class="code-pane-html">
                 <textarea id="alimcode" name="alimcode"></textarea>
-                <textarea id="ouput"></textarea>
+                <textarea id="output"></textarea>
             </div>
         </div>
         <div class="preview-pane">
