@@ -24,14 +24,14 @@
 
 	<script src="./codemirror/lib/codemirror.js"></script>
 	<link rel="stylesheet" href="./codemirror/lib/codemirror.css">
-	<script src="./codemirror/mode/python/python.js"></script>
+	<!--script src="./codemirror/mode/python/python.js"></script-->
 	<link rel="stylesheet" href="./codemirror/theme/dracula.css">
 	<script src="./codemirror/addon/scroll/simplescrollbars.js"></script>
 
 
 	<!--codemirror modes-->
 	<script src="./codemirror/mode/python/python.js"></script>
-	<script src="./codemirror/mode/javascript/javascript.js"></script>
+	<!--script src="./codemirror/mode/javascript/javascript.js"></script-->
 
 	<!--codemirror addons-->
 	<script src="./codemirror/addon/fold/foldcode.js"></script>
@@ -44,6 +44,30 @@
 	<script src="./codemirror/addon/selection/active-line.js"></script>
 
 	<script src="./codemirror/keymap/sublime.js"></script>
+
+	<script src="./js/skulpt-kw.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		function outf(text)
+		{
+		    var output = document.getElementById("output");
+		    text = text.replace(/</g, '&lt;');
+		    output.innerHTML = output.innerHTML + text;
+		}
+
+		function runit()
+		{
+		    var prog = document.getElementById("alimcode").value;
+		    var output = document.getElementById("output");
+		    output.innerHTML = '';
+		    Sk.configure({output:outf});
+		    try {
+		        Sk.importMainWithBody("<stdin>", false, prog);
+		    } catch (e) {
+		        alert(e);
+		    }
+		}
+	</script>
 
 
 </head>
@@ -68,6 +92,7 @@
         <div class="code-pane">
             <div class="code-pane-html">
                 <textarea id="alimcode" name="alimcode"></textarea>
+                <textarea id="ouput"></textarea>
             </div>
         </div>
         <div class="preview-pane">
