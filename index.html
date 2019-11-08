@@ -24,7 +24,7 @@
 
 	<script src="./codemirror/lib/codemirror.js"></script>
 	<link rel="stylesheet" href="./codemirror/lib/codemirror.css">
-	<!--script src="./codemirror/mode/python/python.js"></script-->
+	<script src="./codemirror/mode/python/python.js"></script>
 	<link rel="stylesheet" href="./codemirror/theme/dracula.css">
 	<script src="./codemirror/addon/scroll/simplescrollbars.js"></script>
 
@@ -50,7 +50,7 @@
 	<script type="text/javascript">
 		function outf(text)
 		{
-		    var output = document.getElementById("output");
+		    var output = document.getElementById("alimcode");
 		    text = text.replace(/</g, '&lt;');
 		    output.innerHTML = output.innerHTML + text;
 		}
@@ -58,7 +58,7 @@
 		function runit()
 		{
 		    var prog = document.getElementById("alimcode").value;
-		    var output = document.getElementById("output");
+		    var output = document.getElementById("alimcode");
 		    output.innerHTML = '';
 		    Sk.configure({output:outf});
 		    try {
