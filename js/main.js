@@ -20,16 +20,17 @@ $(document).ready(function() {
     });
     codeEditor.doc.setValue('move();');
     //codeEditor.addLineClass(0, 'wrap', 'line-error');
-
+    /*
     $('.run-script').click(function () {
         runit();
-        /*
+        
         try {
             eval(codeEditor.doc.getValue());
             run();
         } catch(e) {
             alert('Исправьте ошибки');
         }    
-        */
+        
     }) 
+    */
 });
