@@ -1,5 +1,6 @@
+var codeEditor;
 $(document).ready(function() {
-    var codeEditor = document.editor = CodeMirror.fromTextArea(alimcode, {
+    codeEditor = document.editor = CodeMirror.fromTextArea(alimcode, {
         mode: 'python',
         keymap: 'sublime',
         lineNumbers: true,
@@ -19,6 +20,7 @@ $(document).ready(function() {
         styleActiveLine: true
     });
     codeEditor.doc.setValue('print("hello")\nmove();');
+
     //codeEditor.addLineClass(0, 'wrap', 'line-error');
     /*
     $('.run-script').click(function () {
@@ -33,4 +35,6 @@ $(document).ready(function() {
         
     }) 
     */
+
+    
 });
