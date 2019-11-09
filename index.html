@@ -94,8 +94,8 @@
 	}
 
 	function runit() { 
-	   var prog = document.getElementById("alimcode").value; 
-	   var mypre = document.getElementById("output"); 
+	   var prog = $("#alimcode").text(); 
+	   var mypre = $("#output").text(); 
 	   mypre.innerHTML = ''; 
 	   Sk.pre = "output";
 	   Sk.configure({output:outf, read:builtinRead}); 
