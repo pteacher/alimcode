@@ -24,7 +24,6 @@
 
 	<script src="./codemirror/lib/codemirror.js"></script>
 	<link rel="stylesheet" href="./codemirror/lib/codemirror.css">
-	<script src="./codemirror/mode/python/python.js"></script>
 	<link rel="stylesheet" href="./codemirror/theme/dracula.css">
 	<script src="./codemirror/addon/scroll/simplescrollbars.js"></script>
 
@@ -48,11 +47,40 @@
 	<script src="./js/skulpt.min.js" type="text/javascript"></script>
 	<script src="./js/skulpt-stdlib.js" type="text/javascript"></script>
 
-	
-
-
 </head>
 <body>
+
+<div id="wrapper">
+    <section id="utils">
+        <div class="logo">
+            <a href="#"><img src="./images/alimcode.png" alt=""></a>
+        </div>
+        <div class="code-swap">
+            <span class="toggle-view">view <i class="fa fa-chevron-down"></i></span>
+            <span class="run-script" onclick="runit();">Запуск <i class="fa fa-bolt"></i></span>
+        </div>
+        <div class="code-tools">
+
+            <!--span class="clear-editor">- <i class="fa fa-trash"></i></span-->
+            
+            <!--span class="save">- <i class="fa fa-download"></i></span-->
+        </div>
+    </section>
+    <section id="editor">
+        <div class="code-pane">
+            <div class="code-pane-html">
+                <textarea id="alimcode" name="alimcode"></textarea>
+                <pre id="output"></pre>
+            </div>
+        </div>
+        <div class="preview-pane">
+        	<script src="./js/pixi.min.js"></script>
+        	<script type="text/javascript" src="./js/robot.js"></script>
+            <span class="preview-width"></span>
+        </div>
+    </section>
+</div>
+<script type="text/javascript" src="./js/main.js"></script>
 <script type="text/javascript">
 	function outf(text) { 
 	    var mypre = document.getElementById("output"); 
@@ -82,36 +110,5 @@
 	   });
 	} 
 </script>
-<div id="wrapper">
-    <section id="utils">
-        <div class="logo">
-            <a href="#"><img src="./images/alimcode.png" alt=""></a>
-        </div>
-        <div class="code-swap">
-            <span class="toggle-view">view <i class="fa fa-chevron-down"></i></span>
-            <span class="run-script" onclick="runit();">Запуск <i class="fa fa-bolt"></i></span>
-        </div>
-        <div class="code-tools">
-
-            <!--span class="clear-editor">- <i class="fa fa-trash"></i></span-->
-            
-            <!--span class="save">- <i class="fa fa-download"></i></span-->
-        </div>
-    </section>
-    <section id="editor">
-        <div class="code-pane">
-            <div class="code-pane-html">
-                <textarea id="alimcode" name="alimcode"></textarea>
-                <textarea id="output"></textarea>
-            </div>
-        </div>
-        <div class="preview-pane">
-        	<script src="./js/pixi.min.js"></script>
-        	<script type="text/javascript" src="./js/robot.js"></script>
-            <span class="preview-width"></span>
-        </div>
-    </section>
-</div>
-<script type="text/javascript" src="./js/main.js"></script>
 </body>
 </html>
