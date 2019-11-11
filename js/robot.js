@@ -131,8 +131,10 @@ function reset() {
     chick.rotation = 0;
 }
 
+
 function run() {
     reset();
+    cmds.unshift(function () {});
     for (var i = 0; i < cmds.length; i++) {
         setTimeout(eval(cmds[i]), 1000 * i);
     }

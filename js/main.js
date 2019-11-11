@@ -19,9 +19,9 @@ $(document).ready(function() {
         scrollbarStyle: 'overlay',
         styleActiveLine: true
     });
-    codeEditor.doc.setValue('print("hello")\nmove();');
+    codeEditor.doc.setValue('def move():\n    print("move();")\n\nfor i in range(3):\n    move()');
 
-    //codeEditor.addLineClass(0, 'wrap', 'line-error');
+    
     /*
     $('.run-script').click(function () {
         runit();

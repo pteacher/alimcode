@@ -70,7 +70,7 @@
         <div class="code-pane">
             <div class="code-pane-html">
                 <textarea id="alimcode" name="alimcode"></textarea>
-                <pre id="output"></pre>
+                <pre id="output" hidden="true"></pre>
             </div>
         </div>
         <div class="preview-pane">
@@ -79,12 +79,16 @@
             <span class="preview-width"></span>
         </div>
     </section>
+    <section id="debug-pane">
+    	<div id="debug">></div>
+    </section>
 </div>
 <script type="text/javascript" src="./js/main.js"></script>
 <script type="text/javascript">
 	function outf(text) { 
-	    var mypre = document.getElementById("output"); 
-	    mypre.innerHTML = mypre.innerHTML + text; 
+	    var mypre = document.getElementById("output");
+	    mypre.innerHTML = mypre.innerHTML + text;
+
 	} 
 
 	function builtinRead(x) {
@@ -93,11 +97,10 @@
 	    return Sk.builtinFiles["files"][x];
 	}
 
-	function runit() { 
-	   console.log(codeEditor.doc.getValue());
-	   var prog = codeEditor.doc.getValue(); 
+	function runit() {
+	   var prog = codeEditor.doc.getValue();
 	   var mypre = $("#output").text(); 
-	   mypre.innerHTML = ''; 
+	   $("#output").text(""); 
 	   Sk.pre = "output";
 	   Sk.configure({
 	    output:outf, 
@@ -108,10 +111,21 @@
 	       return Sk.importMainWithBody("<stdin>", false, prog, true);
 	   });
 	   myPromise.then(function(mod) {
-	       console.log('success');
+	       //console.log('success');
+	       try {
+	           eval($("#output").text());
+	           console.log($("#output").text())
+	           run();
+	       } catch(e) {
+	           alert('Исправьте ошибки');
+	       } 
+	       
 	   },
 	       function(err) {
-	       console.log(err.toString());
+	       	var msg = err.toString();
+	       	$("#debug").text(msg);
+	       	console.log()
+	       	codeEditor.addLineClass(msg.split(" ")[msg.split(" ").length-1] - 1, 'wrap', 'line-error');
 	   });
 	}
 </script>
