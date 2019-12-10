@@ -174,7 +174,7 @@ width:100%;
 
 .code-tools {
 position:absolute;
-right:260px;
+left:150px;
 }
 
 .code-tools span .fa {
@@ -193,6 +193,10 @@ font-weight:700;
 height:48px;
 padding:10px 15px;
 text-decoration:none;
+}
+
+.level-active {
+    background-color:green !important;
 }
 
 .code-swap span.code-swap-html,
