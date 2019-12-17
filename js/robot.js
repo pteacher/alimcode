@@ -25,6 +25,7 @@ var robotTexture = PIXI.Texture.fromImage('assets/robot.png');
 
 
 var field = new PIXI.Container();
+var level = new PIXI.Container();
 var robot;
 
 for (var x = 0; x < FIELD_SIZE_IN_CELLS; x++) {
@@ -41,6 +42,18 @@ for (var x = 0; x < FIELD_SIZE_IN_CELLS; x++) {
 app.stage.addChild(field);
 getTask(0);
 
+var cd = $('.code-tools');
+for (var i = 0; i < 3; i++) {
+    var span = $('<span />').addClass('clear-editor').html(i + 1);
+    span.click((function(index) {
+        return function() {
+            getTask(index); 
+            console.log(index);
+        };
+    })(i));
+    cd.append(span);          
+}
+
 
 function newItem(x, y, scale, texture) {
     var item = new PIXI.Sprite(texture);
@@ -56,31 +69,31 @@ function getTask(lvl) {
     loadJSON(function(response) {
         var data = JSON.parse(response);
         task = data[lvl].task;
+        level.removeChildren();
 
         for (var y = 0; y < FIELD_SIZE_IN_CELLS; y++) {
             for (var x = 0; x < FIELD_SIZE_IN_CELLS; x++) {
                 if (data[lvl].task[y][x] == 1) {
-                    robot = newItem(x * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, y * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, 0.5, robotTexture);
-                    
+                    robot = newItem(x * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, y * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, 0.5, robotTexture); 
                     robot.zOrder = -999;
-                    console.log(robot.zOrder);
-                    app.stage.addChild(robot);
+                    level.addChild(robot);
                 }
                 if (data[lvl].task[y][x] == 2) {
 
                     var goal = newItem(x * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, y * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, 0.5, goalTexture);
                     goal.zOrder = 0;
-                    console.log(goal.zOrder);
-                    app.stage.addChild(goal);
+                    level.addChild(goal);
                 }
 
                 if (data[lvl].task[y][x] == 3) {
                     var wall = newItem(x * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, y * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, 0.5, wallTexture);
-                    app.stage.addChild(wall);
+                    level.addChild(wall);
+                    
                 }
                 
             }
         }
+        app.stage.addChild(level);
      });
 }
 

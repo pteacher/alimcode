@@ -21,6 +21,7 @@ $(document).ready(function() {
     });
     codeEditor.doc.setValue('def move():\n    print("move();")\n\nfor i in range(3):\n    move()');
 
+
     
     /*
     $('.run-script').click(function () {
@@ -35,6 +36,9 @@ $(document).ready(function() {
         
     }) 
     */
+
+
+    
 
     
 });
