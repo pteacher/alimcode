@@ -19,14 +19,18 @@ app.stage.addChild(background);
 
 
 
-var goalTexture = PIXI.Texture.fromImage('assets/flag.png');
-var wallTexture = PIXI.Texture.fromImage('assets/rock.png');
-var robotTexture = PIXI.Texture.fromImage('assets/robot.png');
+var goalTexture = PIXI.Texture.from('assets/flag.png');
+var wallTexture = PIXI.Texture.from('assets/rock.png');
+var robotTexture = PIXI.Texture.from('assets/robot.png');
+var bg = new PIXI.Graphics().beginFill(0xffffff).drawRect(0,0, cw, ch).endFill();
 
 
 var field = new PIXI.Container();
 var level = new PIXI.Container();
+level.sortableChildren  = true;
+
 var robot;
+field.addChild(bg);
 
 for (var x = 0; x < FIELD_SIZE_IN_CELLS; x++) {
     for (var y = 0; y < FIELD_SIZE_IN_CELLS; y++) {
@@ -73,22 +77,28 @@ function getTask(lvl) {
 
         for (var y = 0; y < FIELD_SIZE_IN_CELLS; y++) {
             for (var x = 0; x < FIELD_SIZE_IN_CELLS; x++) {
-                if (data[lvl].task[y][x] == 1) {
-                    robot = newItem(x * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, y * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, 0.5, robotTexture); 
-                    robot.zOrder = -999;
-                    level.addChild(robot);
-                }
+
                 if (data[lvl].task[y][x] == 2) {
 
                     var goal = newItem(x * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, y * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, 0.5, goalTexture);
-                    goal.zOrder = 0;
+
+                    goal.zIndex = 9;
                     level.addChild(goal);
                 }
 
                 if (data[lvl].task[y][x] == 3) {
                     var wall = newItem(x * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, y * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, 0.5, wallTexture);
+
+                    wall.zIndex = 6;
                     level.addChild(wall);
                     
+                }
+
+                if (data[lvl].task[y][x] == 1) {
+                    robot = newItem(x * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, y * (CELL_SIZE_PX * 2) + CELL_SIZE_PX, 0.5, robotTexture); 
+
+                    robot.zIndex = 99;
+                    level.addChild(robot);
                 }
                 
             }
@@ -169,3 +179,11 @@ function loadJSON(callback) {
    };
    xobj.send(null);  
 }
+
+var ticker = new PIXI.Ticker();
+
+ticker.add(function (deltaTime) {
+    //app.render(root);
+});
+
+ticker.start();
